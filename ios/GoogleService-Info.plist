@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>516434921280-5lmps6bpcsg4itiida6vpunsel8qdp7a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.516434921280-5lmps6bpcsg4itiida6vpunsel8qdp7a</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>516434921280-g6kvibj7bsmv8621aj59mudgatqjs5sn.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBEbnKaHNwrd6tXuni8fadLXi6Ick7smU0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>516434921280</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.taxigo</string>
+	<key>PROJECT_ID</key>
+	<string>taxi-go-60f28</string>
+	<key>STORAGE_BUCKET</key>
+	<string>taxi-go-60f28.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:516434921280:ios:35db147ad15514c4355ca5</string>
+</dict>
+</plist>

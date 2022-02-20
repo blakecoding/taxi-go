@@ -32,6 +32,22 @@ const GStyles = StyleSheet.create({
   width_100: {
     width: '100%',
   },
+  triangle_down: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderBottomWidth: 10,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: AppColors.primary,
+    transform: [{rotate: '180deg'}],
+  },
+  spinnerTextStyle: {
+    color: '#FFF',
+  },
 });
 
 export default GStyles;

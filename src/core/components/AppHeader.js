@@ -1,6 +1,6 @@
 import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {LinearGradientView} from '.';
+import LinearGradientView from '../components/LinearGradientView';
 
 const {width} = Dimensions.get('window');
 

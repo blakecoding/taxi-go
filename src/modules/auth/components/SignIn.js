@@ -1,10 +1,23 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {GStyles} from '../../../core/theme';
 import {AppButton, AppInput, AppText, SizedBox} from '../../../core/components';
 import Flag from './Flag';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 const SignIn = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const [phone, setPhone] = useState('');
+
+  const onSignInPress = async () => {
+    const confirm = await dispatch.auth.authPhoneLogin(phone);
+    if (confirm) {
+      navigation.navigate('otp', {confirm, phone});
+    }
+  };
+
   const renderPhonePrefix = (value = '+84') => {
     return (
       <>
@@ -13,6 +26,7 @@ const SignIn = () => {
       </>
     );
   };
+
   return (
     <View style={[GStyles.container, styles.container]}>
       <AppText style={styles.label} bold>
@@ -26,10 +40,12 @@ const SignIn = () => {
           placeholder={'Phone Number'}
           style={GStyles.flex1}
           leadComponent={renderPhonePrefix}
+          value={phone}
+          onChangeText={setPhone}
         />
       </View>
       <SizedBox size={27} />
-      <AppButton label="SIGN IN" />
+      <AppButton label="SIGN IN" onPress={onSignInPress} />
     </View>
   );
 };

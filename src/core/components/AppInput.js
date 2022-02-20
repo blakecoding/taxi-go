@@ -8,12 +8,19 @@ const AppInput = props => {
     leadComponent,
     style,
     actionsComponent,
+    value,
   } = props;
+
+  const textInputStyle = {
+    fontFamily: value ? undefined : 'Corbel-Bold',
+  };
+
   return (
     <View style={[styles.container, style]}>
       {!!leadComponent && leadComponent()}
       <TextInput
-        style={styles.textInput}
+        {...props}
+        style={[styles.textInput, textInputStyle]}
         placeholder={placeholder}
         placeholderTextColor={AppColors.inputBorder}
       />
@@ -39,6 +46,5 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    fontFamily: 'Corbel-Bold',
   },
 });

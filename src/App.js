@@ -8,14 +8,11 @@
 
 import React, {useEffect} from 'react';
 import type {Node} from 'react';
-
 import SplashScreen from 'react-native-splash-screen';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthScreen, ConfirmOTPScreen} from './modules/auth';
-import {ChatScreen, ChatsScreen} from './modules/chat';
+import {Provider} from 'react-redux';
 
-const Stack = createNativeStackNavigator();
+import Route from './routes/Route';
+import store from './core/store';
 
 const App: () => Node = () => {
   useEffect(() => {
@@ -23,16 +20,9 @@ const App: () => Node = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="auth"
-        screenOptions={{headerShown: false, statusBarStyle: 'light'}}>
-        <Stack.Screen name="auth" component={AuthScreen} />
-        <Stack.Screen name="otp" component={ConfirmOTPScreen} />
-        <Stack.Screen name="chats" component={ChatsScreen} />
-        <Stack.Screen name="chat" component={ChatScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <Route />
+    </Provider>
   );
 };
 

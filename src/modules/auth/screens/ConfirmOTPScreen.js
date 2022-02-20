@@ -1,6 +1,9 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {Alert, StyleSheet, TouchableOpacity, View} from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+
 import {
   AppButton,
   AppHeader,
@@ -10,17 +13,35 @@ import {
 } from '../../../core/components';
 import {AppColors} from '../../../core/theme';
 import {BackIcon} from '../../../assets';
-import {useNavigation} from '@react-navigation/native';
 
 const ConfirmOTPScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const dispatch = useDispatch();
+
+  const confirm = route?.params?.confirm;
+  const phone = route?.params?.phone || 'Phone Number';
 
   const onBackPress = () => {
     navigation.goBack();
   };
 
-  const onPressSubmit = () => {
-    navigation.navigate('chats');
+  const onPressSubmit = async code => {
+    try {
+      if (confirm) {
+        const userCredential = await confirm.confirm(code);
+        if (userCredential) {
+          const {user} = userCredential;
+          dispatch.auth.SET_USER({user, uid: user.uid});
+          navigation.navigate('chats');
+        } else {
+          throw new Error('Cannot get user');
+        }
+      }
+    } catch (error) {
+      console.log('# ConfirmOTPScreen,', error);
+      Alert.alert('Alert', error.code);
+    }
   };
 
   return (
@@ -43,10 +64,10 @@ const ConfirmOTPScreen = () => {
           Enter the 4 digit code we just sent to
         </AppText>
         <AppText bold style={styles.phoneText}>
-          +19685121212
+          {phone}
         </AppText>
         <OTPInputView
-          pinCount={4}
+          pinCount={6}
           style={styles.otpInputView}
           codeInputFieldStyle={styles.otpCodeInputFieldStyle}
           placeholderTextColor={AppColors.inputBorder}
@@ -91,7 +112,7 @@ const styles = StyleSheet.create({
   },
   otpInputView: {
     height: 100,
-    marginHorizontal: 51,
+    marginHorizontal: 12,
   },
   otpCodeInputFieldStyle: {
     width: 56,

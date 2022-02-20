@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "516434921280",
+    "project_id": "taxi-go-60f28",
+    "storage_bucket": "taxi-go-60f28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516434921280:android:4a2b20e58b53ebbf355ca5",
+        "android_client_info": {
+          "package_name": "com.taxigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516434921280-g6kvibj7bsmv8621aj59mudgatqjs5sn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxigo",
+            "certificate_hash": "7c428404b02416764a264cd3e871ca767b2cc9b9"
+          }
+        },
+        {
+          "client_id": "516434921280-lvptimrgf1gg1iosg4hojd3g33ou7jh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAnhBEYLLuT_Ma1D3tZXouYqGE-jY1Diw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516434921280-lvptimrgf1gg1iosg4hojd3g33ou7jh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,7 +3,6 @@ import {
   FlatList,
   Image,
   Pressable,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -49,6 +48,30 @@ const ChatsScreen = () => {
       name: 'Lisa',
       status: null,
     },
+    {
+      avaUri:
+        'https://ath2.unileverservices.com/wp-content/uploads/sites/4/2020/02/IG-annvmariv-1024x1016.jpg',
+      name: 'Adrianne',
+      status: 'Now',
+    },
+    {
+      avaUri:
+        'https://i.pinimg.com/564x/44/15/ba/4415ba5df0f4bfcee5893d6c441577e0.jpg',
+      name: 'Ivone',
+      status: '12:15',
+    },
+    {
+      avaUri:
+        'https://imagesmtv-a.akamaihd.net/uri/mgid:ao:image:mtv.com:235609?quality=0.8&format=jpg&width=1440&height=810&.jpg',
+      name: 'Eve',
+      status: '12:15',
+    },
+    {
+      avaUri:
+        'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Z2lybHxlbnwwfHwwfHw%3D&w=1000&q=80',
+      name: 'Lisa',
+      status: null,
+    },
   ];
 
   const onItemPress = item => () => {
@@ -61,7 +84,7 @@ const ChatsScreen = () => {
         style={{flexDirection: 'row', alignItems: 'center'}}
         onPress={onItemPress(item)}>
         <Image
-          source={{url: item?.avaUri || ''}}
+          source={{uri: item?.avaUri || ''}}
           style={{width: 60, height: 60, borderRadius: 50}}
         />
         <SizedBox size={15} />
@@ -75,73 +98,77 @@ const ChatsScreen = () => {
     );
   };
 
+  const ItemSeparatorComponent = () => <View style={styles.separator} />;
+
   return (
     <Screen>
-      <AppHeader height={155}>
-        <SizedBox size={10} />
-        <View
-          style={{marginHorizontal: 20, height: 32, justifyContent: 'center'}}>
-          <Text
-            style={{
-              fontSize: 16,
-              color: AppColors.white,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              // width: width * 0.7,
-            }}>
-            CONTACTS
-          </Text>
-          <View
-            style={{
-              position: 'absolute',
-              left: 0,
-              height: 32,
-              width: 32,
-            }}>
-            <TouchableOpacity
-              onPress={onBackPress}
-              style={{
-                width: 32,
-                height: 32,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+      <AppHeader style={styles.headerView}>
+        <View style={styles.headerName}>
+          <Text style={styles.headerText}>CONTACTS</Text>
+          <View style={styles.backBtnView}>
+            <TouchableOpacity onPress={onBackPress} style={styles.backBtn}>
               <BackIcon />
             </TouchableOpacity>
           </View>
         </View>
         <SizedBox size={20} />
         <AppInput
-          style={{
-            height: 36,
-            backgroundColor: AppColors.white,
-            marginHorizontal: 20,
-          }}
+          style={styles.searchInput}
           placeholder={'Search'}
           leadComponent={() => <MagnifyingIcon width={14} height={14} />}
         />
       </AppHeader>
-      <SafeAreaView>
-        <FlatList
-          contentContainerStyle={{marginHorizontal: 10}}
-          data={DATA}
-          renderItem={renderItem}
-          ListHeaderComponent={() => <SizedBox size={24} />}
-          ItemSeparatorComponent={() => (
-            <View
-              style={{
-                height: 1,
-                backgroundColor: AppColors.inputBorder,
-                marginVertical: 15,
-              }}
-            />
-          )}
-        />
-      </SafeAreaView>
+      <FlatList
+        contentContainerStyle={styles.listContainer}
+        data={DATA}
+        renderItem={renderItem}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+      />
     </Screen>
   );
 };
 
 export default ChatsScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headerView: {
+    padding: 20,
+  },
+  headerName: {
+    height: 32,
+    justifyContent: 'center',
+  },
+  headerText: {
+    fontSize: 16,
+    color: AppColors.white,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 20,
+    // width: width * 0.7,
+  },
+  backBtnView: {
+    position: 'absolute',
+    left: 0,
+    height: 32,
+    width: 32,
+  },
+  backBtn: {
+    width: 32,
+    height: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchInput: {
+    height: 36,
+    backgroundColor: AppColors.white,
+  },
+  listContainer: {
+    marginHorizontal: 10,
+    paddingVertical: 24,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: AppColors.inputBorder,
+    marginVertical: 15,
+  },
+});

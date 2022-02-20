@@ -1,5 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
+import {GStyles} from '../../../core/theme';
 import MessageItem from './MessageItem';
 
 export default function MessageList(props) {
@@ -36,7 +37,7 @@ export default function MessageList(props) {
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingHorizontal: 16, backgroundColor: 'white'}}
+      contentContainerStyle={GStyles.messageListView}
     />
   );
 }

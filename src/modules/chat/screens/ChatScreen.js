@@ -2,17 +2,18 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
-import {AppText, Screen, SizedBox} from '../../../core/components';
+import {AppAvatar, AppText, Screen, SizedBox} from '../../../core/components';
 import AppHeader from '../../../core/components/AppHeader';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {BackIcon, PhoneIcon} from '../../../assets';
-import {AppColors} from '../../../core/theme';
+import {AppColors, GStyles} from '../../../core/theme';
 import {FooterChat, MessageList} from '../components';
 
 const ChatScreen = () => {
@@ -90,80 +91,47 @@ const ChatScreen = () => {
 
   return (
     <Screen>
-      <AppHeader height={171}>
-        <View
-          style={{
-            marginHorizontal: 22,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}>
-          <View style={{flexDirection: 'column'}}>
-            <TouchableOpacity
-              onPress={onBackPress}
-              style={{
-                width: 32,
-                height: 32,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+      <AppHeader>
+        <View style={styles.headerView}>
+          <View style={GStyles.flexCol}>
+            <TouchableOpacity onPress={onBackPress} style={styles.backBtn}>
               <BackIcon />
             </TouchableOpacity>
             <SizedBox size={25} />
-            <AppText style={{fontSize: 26, color: AppColors.white}} bold>
+            <AppText style={styles.headerText} bold>
               {name}
             </AppText>
           </View>
-          <View
-            style={{
-              borderRadius: 50,
-              width: 60,
-              height: 60,
-              padding: 2,
-              backgroundColor: AppColors.white,
-            }}>
-            <Image
-              source={{uri: avaUri}}
-              style={{
-                borderRadius: 50,
-                width: 56,
-                height: 56,
-                backgroundColor: AppColors.white,
-              }}
-            />
-            <View
-              style={{
-                position: 'absolute',
-                top: 0,
-                bottom: 0,
-                left: -20,
-                justifyContent: 'center',
-              }}>
-              <TouchableOpacity
-                style={{
-                  width: 41,
-                  height: 41,
-                  backgroundColor: AppColors.white,
-                  borderRadius: 30,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <PhoneIcon width={24} height={24} />
-              </TouchableOpacity>
-            </View>
-          </View>
+          <AppAvatar avaUri={avaUri} />
         </View>
       </AppHeader>
-      {/* <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}> */}
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        style={styles.body}>
         <MessageList data={messages} />
         <FooterChat />
-      </View>
-      {/* </KeyboardAvoidingView> */}
+      </KeyboardAvoidingView>
     </Screen>
   );
 };
 
 export default ChatScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headerView: {
+    marginHorizontal: 22,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginTop: 20,
+    marginBottom: 35,
+  },
+  backBtn: {
+    width: 32,
+    height: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerText: {fontSize: 26, color: AppColors.white},
+  body: {flex: 1, backgroundColor: 'white'},
+});

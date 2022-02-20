@@ -3,11 +3,11 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
 const AppButton = props => {
-  const {onPress, label = 'Button Text'} = props;
+  const {onPress, label = 'Button Text', style} = props;
 
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, style]}
       activeOpacity={0.5}
       onPress={onPress}>
       <LinearGradient
@@ -33,7 +33,6 @@ var styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 5.46,
-
     elevation: 9,
   },
   linearGradient: {
@@ -45,7 +44,8 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 14,
+    lineHeight: 17,
     fontFamily: 'Gill Sans',
     textAlign: 'center',
     margin: 10,

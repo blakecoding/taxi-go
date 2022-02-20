@@ -14,8 +14,23 @@ const GStyles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 5.46,
-
     elevation: 9,
+  },
+  flex1: {
+    flex: 1,
+  },
+  flexRow: {
+    flexDirection: 'row',
+  },
+  flexCol: {
+    flexDirection: 'column',
+  },
+  messageListView: {
+    paddingHorizontal: 16,
+    backgroundColor: AppColors.white,
+  },
+  width_100: {
+    width: '100%',
   },
 });
 

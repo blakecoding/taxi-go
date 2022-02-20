@@ -1,7 +1,7 @@
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import {View, Text, Animated, StyleSheet, TouchableOpacity} from 'react-native';
 import moment from 'moment';
-import {AppColors} from '../../../core/theme';
+import {AppColors, GStyles} from '../../../core/theme';
 
 export default function MessageItem(props) {
   const {data} = props;
@@ -23,67 +23,57 @@ export default function MessageItem(props) {
   const day = convertDate(sent_at);
   const time = convertToDay(sent_at);
   const dayPrev = convertDate(data?.previousMessage?.sent_at);
+
+  const messageViewStyle = {
+    backgroundColor: isMe ? AppColors.primary : '#34495E',
+    marginTop:
+      data?.currentMessage?.user_id !== data?.previousMessage?.user_id ? 12 : 2,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
+    alignSelf: isMe ? 'flex-start' : 'flex-end',
+    maxWidth: '70%',
+    borderBottomRightRadius: isMe ? 16 : !spaceMessage ? 4 : 0,
+    borderBottomLeftRadius: !isMe ? 16 : spaceMessage ? 0 : 4,
+  };
+
+  const triangleStyle = {
+    borderBottomColor: isMe ? AppColors.primary : '#34495E',
+    transform: [{rotate: isMe ? '230deg' : '130deg'}],
+    marginTop: -14,
+    marginLeft: isMe ? -4 : 0,
+    marginRight: isMe ? 0 : -4,
+    alignSelf: isMe ? 'flex-start' : 'flex-end',
+  };
+
+  const readTimeStyle = {
+    textAlign: isMe ? 'left' : 'right',
+    color: AppColors.inputBorder,
+    fontSize: 11,
+    marginVertical: 4,
+  };
+
   return (
     <View>
       {dayPrev !== day && (
-        <View style={{alignSelf: 'center', marginTop: 16}}>
-          <Text style={{fontSize: 12, color: AppColors.inputBorder}}>
-            {time}
-          </Text>
+        <View style={styles.timeView}>
+          <Text style={styles.timeText}>{time}</Text>
         </View>
       )}
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={() => messageItem.current._onCollapse()}>
-        <View
-          style={{
-            backgroundColor: isMe ? AppColors.primary : '#34495E',
-            marginTop:
-              data?.currentMessage?.user_id !== data?.previousMessage?.user_id
-                ? 16
-                : 2,
-            paddingHorizontal: 12,
-            paddingVertical: 8,
-            borderRadius: 16,
-            alignSelf: isMe ? 'flex-start' : 'flex-end',
-            maxWidth: '70%',
-            borderBottomRightRadius: isMe ? 16 : !spaceMessage ? 4 : 0,
-            borderBottomLeftRadius: !isMe ? 16 : spaceMessage ? 0 : 4,
-          }}>
-          <Text style={{color: '#FFF', lineHeight: 20, fontSize: 13}}>
-            {message}
-          </Text>
+        <View style={messageViewStyle}>
+          <Text style={styles.messageText}>{message}</Text>
         </View>
         {data?.currentMessage?.user_id !== data?.nextMessage?.user_id && (
-          <View
-            style={[
-              styles.triangle,
-              {
-                borderBottomColor: isMe ? AppColors.primary : '#34495E',
-                transform: [{rotate: isMe ? '230deg' : '130deg'}],
-                marginTop: -14,
-                marginLeft: isMe ? -4 : 0,
-                marginRight: isMe ? 0 : -4,
-                alignSelf: isMe ? 'flex-start' : 'flex-end',
-              },
-            ]}
-          />
+          <View style={[styles.triangle, triangleStyle]} />
         )}
       </TouchableOpacity>
-      <View style={{width: '100%'}}>
+      <View style={GStyles.width_100}>
         <AnimatedLayout
           ref={messageItem}
-          viewContent={
-            <Text
-              style={{
-                textAlign: isMe ? 'left' : 'right',
-                color: AppColors.inputBorder,
-                fontSize: 11,
-                marginVertical: 4,
-              }}>
-              Read {time}
-            </Text>
-          }
+          viewContent={<Text style={readTimeStyle}>Read {time}</Text>}
         />
       </View>
     </View>
@@ -150,4 +140,15 @@ const styles = StyleSheet.create({
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
   },
+  headerText: {
+    fontSize: 26,
+    color: AppColors.white,
+  },
+  messageText: {
+    color: '#FFF',
+    lineHeight: 20,
+    fontSize: 13,
+  },
+  timeView: {alignSelf: 'center', marginTop: 12},
+  timeText: {fontSize: 12, color: AppColors.inputBorder},
 });

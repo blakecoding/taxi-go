@@ -5,16 +5,12 @@ import {LinearGradientView} from '.';
 const {width} = Dimensions.get('window');
 
 const AppHeader = props => {
-  const {height} = props;
+  const {height, style} = props;
   return (
-    <View style={{height: height, width: width}}>
-      <LinearGradientView style={{flex: 1}}>
-        <SafeAreaView>{props.children}</SafeAreaView>
-      </LinearGradientView>
-    </View>
+    <LinearGradientView style={[{height: height, width: width}, style]}>
+      <SafeAreaView>{props.children}</SafeAreaView>
+    </LinearGradientView>
   );
 };
 
 export default AppHeader;
-
-const styles = StyleSheet.create({});

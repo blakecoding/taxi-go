@@ -3,15 +3,21 @@ import React from 'react';
 import {AppColors} from '../theme';
 
 const AppInput = props => {
-  const {placeholder = 'Input Placeholder', leadComponent, style} = props;
+  const {
+    placeholder = 'Input Placeholder',
+    leadComponent,
+    style,
+    actionsComponent,
+  } = props;
   return (
     <View style={[styles.container, style]}>
       {!!leadComponent && leadComponent()}
       <TextInput
-        style={{flex: 1, fontFamily: 'Corbel-Bold'}}
+        style={styles.textInput}
         placeholder={placeholder}
         placeholderTextColor={AppColors.inputBorder}
       />
+      {!!actionsComponent && actionsComponent()}
     </View>
   );
 };
@@ -29,5 +35,10 @@ const styles = StyleSheet.create({
     height: 51,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: AppColors.white,
+  },
+  textInput: {
+    flex: 1,
+    fontFamily: 'Corbel-Bold',
   },
 });

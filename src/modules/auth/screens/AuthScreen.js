@@ -1,6 +1,7 @@
 import {
   Image,
   KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -9,7 +10,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {AppText, LinearGradientView, Screen} from '../../../core/components';
-import {AppColors, GStyles} from '../../../core/theme';
+import {AppColors, AppFonts, GStyles} from '../../../core/theme';
 import {Logo} from '../../../assets';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {SignIn, SignUp} from '../components';
@@ -93,39 +94,24 @@ const AuthScreen = () => {
 
   return (
     <Screen>
-      <KeyboardAvoidingView style={{flex: 8}} behavior={'padding'}>
-        <LinearGradientView
-          style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <KeyboardAvoidingView
+        style={styles.formView}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <LinearGradientView style={styles.logoBackground}>
           <Logo height={100} />
         </LinearGradientView>
-        <View
-          style={[
-            {
-              marginHorizontal: 20,
-              backgroundColor: AppColors.white,
-              marginTop: -58,
-              borderRadius: 10,
-              height: 300,
-            },
-            GStyles.boxShadow,
-          ]}>
+        <View style={[styles.formContainer, GStyles.boxShadow]}>
           <MyTabs />
         </View>
       </KeyboardAvoidingView>
-      <View style={{flex: 2, justifyContent: 'flex-end', alignItems: 'center'}}>
+      <View style={styles.footerView}>
         <SafeAreaView>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              paddingBottom: 16,
-              justifyContent: 'space-around',
-            }}>
+          <View style={styles.footerOptionView}>
             {loginMethods.map(item => renderSocialMethod(item))}
           </View>
-          <AppText style={{textAlign: 'center', fontWeight: '500'}}>
+          <AppText style={styles.footerText} bold>
             By signing in you agree to our{' '}
-            <Text style={{textDecorationLine: 'underline'}}>Terms of use</Text>
+            <Text style={styles.underlineText}>Terms of use</Text>
           </AppText>
         </SafeAreaView>
       </View>
@@ -144,5 +130,46 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: AppColors.iconBorder,
+    backgroundColor: AppColors.white,
+  },
+  formView: {
+    flex: 1,
+    bottom: 100,
+    backgroundColor: AppColors.white,
+  },
+  logoBackground: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
+  },
+  formContainer: {
+    marginHorizontal: 20,
+    backgroundColor: AppColors.white,
+    marginTop: -58,
+    borderRadius: 10,
+    height: 300,
+  },
+  footerView: {
+    height: 100,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 10,
+  },
+  footerOptionView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 23,
+    justifyContent: 'space-around',
+    minWidth: 260,
+  },
+  footerText: {
+    textAlign: 'center',
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 10,
+  },
+  underlineText: {
+    textDecorationLine: 'underline',
   },
 });

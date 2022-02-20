@@ -10,14 +10,10 @@ const LinearGradientView = props => {
       colors={['#109F2E', '#51C569']}
       start={{x: 0.0, y: 0.25}}
       end={{x: 1.0, y: 1.0}}
-      style={[styles.linearGradient, style]}>
-      <View style={style}>{props.children}</View>
+      style={style}>
+      {props.children}
     </LinearGradient>
   );
 };
 
 export default LinearGradientView;
-
-const styles = StyleSheet.create({
-  linearGradient: {flex: 1},
-});

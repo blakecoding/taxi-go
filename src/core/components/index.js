@@ -1,3 +1,4 @@
+import AppAvatar from './AppAvatar';
 import AppButton from './AppButton';
 import AppHeader from './AppHeader';
 import AppInput from './AppInput';
@@ -14,4 +15,5 @@ export {
   SizedBox,
   AppText,
   AppHeader,
+  AppAvatar,
 };

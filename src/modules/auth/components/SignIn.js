@@ -8,23 +8,23 @@ const SignIn = () => {
   const renderPhonePrefix = (value = '+84') => {
     return (
       <>
-        <Text style={{fontSize: 22, fontWeight: 'bold'}}>{value}</Text>
+        <Text style={styles.phonePrefix}>{value}</Text>
         <SizedBox size={20} />
       </>
     );
   };
   return (
     <View style={[GStyles.container, styles.container]}>
-      <AppText style={{fontSize: 16, textAlign: 'center'}} bold>
+      <AppText style={styles.label} bold>
         Login with your Phone Number
       </AppText>
       <SizedBox style={20} />
-      <View style={{flexDirection: 'row'}}>
+      <View style={GStyles.flexRow}>
         <Flag />
         <SizedBox size={20} />
         <AppInput
           placeholder={'Phone Number'}
-          style={{flex: 1}}
+          style={GStyles.flex1}
           leadComponent={renderPhonePrefix}
         />
       </View>
@@ -43,4 +43,9 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 10,
     borderBottomStartRadius: 10,
   },
+  phonePrefix: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  label: {fontSize: 16, textAlign: 'center'},
 });

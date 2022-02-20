@@ -10,7 +10,7 @@ const SignUp = () => {
   const renderPhonePrefix = (value = '+84') => {
     return (
       <>
-        <Text style={{fontSize: 22, fontWeight: 'bold'}}>{value}</Text>
+        <Text style={styles.phonePrefix}>{value}</Text>
         <SizedBox size={20} />
       </>
     );
@@ -24,11 +24,11 @@ const SignUp = () => {
     <View style={[GStyles.container, styles.container]}>
       <AppInput placeholder={'name@example.com'} />
       <SizedBox size={15} />
-      <View style={{flexDirection: 'row'}}>
+      <View style={GStyles.flexRow}>
         <Flag />
         <SizedBox size={20} />
         <AppInput
-          style={{flex: 1}}
+          style={GStyles.flex1}
           leadComponent={renderPhonePrefix}
           placeholder={'Phone Number'}
         />
@@ -44,5 +44,8 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    borderBottomEndRadius: 10,
+    borderBottomStartRadius: 10,
   },
+  phonePrefix: {fontSize: 22, fontWeight: 'bold'},
 });

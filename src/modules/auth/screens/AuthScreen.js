@@ -8,12 +8,11 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {AppText, LinearGradientView, Screen} from '../components';
-import {AppColors, GStyles} from '../theme';
-import {Logo} from '../assets';
+import {AppText, LinearGradientView, Screen} from '../../../core/components';
+import {AppColors, GStyles} from '../../../core/theme';
+import {Logo} from '../../../assets';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+import {SignIn, SignUp} from '../components';
 
 const Tab = createMaterialTopTabNavigator();
 

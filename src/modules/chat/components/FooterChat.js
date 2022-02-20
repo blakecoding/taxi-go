@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
-import {AppText} from '../../components';
-import {AppColors} from '../../theme';
+import {AppText} from '../../../core/components';
+import {AppColors} from '../../../core/theme';
 
 export default function FooterChat(props) {
   return (

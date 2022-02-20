@@ -8,13 +8,12 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {AppText, Screen, SizedBox} from '../components';
-import AppHeader from '../components/AppHeader';
-import MessageList from './components/MessageList';
-import FooterChat from './components/FooterChat';
+import {AppText, Screen, SizedBox} from '../../../core/components';
+import AppHeader from '../../../core/components/AppHeader';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {BackIcon, PhoneIcon} from '../assets';
-import {AppColors} from '../theme';
+import {BackIcon, PhoneIcon} from '../../../assets';
+import {AppColors} from '../../../core/theme';
+import {FooterChat, MessageList} from '../components';
 
 const ChatScreen = () => {
   const navigation = useNavigation();

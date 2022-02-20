@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {GStyles} from '../../theme';
-import {AppButton, AppInput, AppText, SizedBox} from '../../components';
+import {GStyles} from '../../../core/theme';
+import {AppButton, AppInput, AppText, SizedBox} from '../../../core/components';
 import Flag from './Flag';
 
 const SignIn = () => {

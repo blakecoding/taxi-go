@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {GStyles} from '../../theme';
-import {AppButton, AppInput, SizedBox} from '../../components';
-import Flag from './Flag';
+import {GStyles} from '../../../core/theme';
+import {AppButton, AppInput, SizedBox} from '../../../core/components';
 import {useNavigation} from '@react-navigation/native';
+import Flag from './Flag';
 
 const SignUp = () => {
   const navigation = useNavigation();

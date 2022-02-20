@@ -1,7 +1,7 @@
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 import {View, Text, Animated, StyleSheet, TouchableOpacity} from 'react-native';
 import moment from 'moment';
-import {AppColors} from '../../theme';
+import {AppColors} from '../../../core/theme';
 
 export default function MessageItem(props) {
   const {data} = props;

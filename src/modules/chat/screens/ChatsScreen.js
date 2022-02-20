@@ -10,15 +10,14 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {AppInput, Screen, SizedBox} from '../components';
-import AppHeader from '../components/AppHeader';
-import {AppColors} from '../theme';
 import {useNavigation} from '@react-navigation/native';
-import {BackIcon, MagnifyingIcon} from '../assets';
+import {AppHeader, AppInput, Screen, SizedBox} from '../../../core/components';
+import {AppColors} from '../../../core/theme';
+import {BackIcon, MagnifyingIcon} from '../../../assets';
 
 const {height, width} = Dimensions.get('window');
 
-const HomeScreen = () => {
+const ChatsScreen = () => {
   const navigation = useNavigation();
 
   const onBackPress = () => {
@@ -143,6 +142,6 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default ChatsScreen;
 
 const styles = StyleSheet.create({});

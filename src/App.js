@@ -12,10 +12,8 @@ import type {Node} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AuthScreen from './screens/AuthScreen';
-import ConfirmOTPScreen from './screens/ConfirmOTPScreen';
-import HomeScreen from './screens/HomeScreen';
-import ChatScreen from './screens/ChatScreen';
+import {AuthScreen, ConfirmOTPScreen} from './modules/auth';
+import {ChatScreen, ChatsScreen} from './modules/chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +29,7 @@ const App: () => Node = () => {
         screenOptions={{headerShown: false, statusBarStyle: 'light'}}>
         <Stack.Screen name="auth" component={AuthScreen} />
         <Stack.Screen name="otp" component={ConfirmOTPScreen} />
-        <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen name="chats" component={ChatsScreen} />
         <Stack.Screen name="chat" component={ChatScreen} />
       </Stack.Navigator>
     </NavigationContainer>

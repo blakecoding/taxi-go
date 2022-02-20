@@ -10,15 +10,14 @@ import React from 'react';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {
   AppButton,
+  AppHeader,
   AppText,
-  LinearGradientView,
   Screen,
   SizedBox,
-} from '../components';
-import {AppColors} from '../theme';
-import {BackIcon} from '../assets';
+} from '../../../core/components';
+import {AppColors} from '../../../core/theme';
+import {BackIcon} from '../../../assets';
 import {useNavigation} from '@react-navigation/native';
-import AppHeader from '../components/AppHeader';
 
 const ConfirmOTPScreen = () => {
   const navigation = useNavigation();
@@ -28,7 +27,7 @@ const ConfirmOTPScreen = () => {
   };
 
   const onPressSubmit = () => {
-    navigation.navigate('home');
+    navigation.navigate('chats');
   };
 
   return (

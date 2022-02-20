@@ -1,8 +1,8 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
-import {SizedBox} from '../../components';
-import {Dropdown, flagImage} from '../../assets';
-import {AppColors} from '../../theme';
+import {SizedBox} from '../../../core/components';
+import {Dropdown, flagImage} from '../../../assets';
+import {AppColors} from '../../../core/theme';
 
 const Flag = () => {
   return (

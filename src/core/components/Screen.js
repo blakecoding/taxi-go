@@ -12,13 +12,14 @@ import {AppColors} from '../theme';
 import AppText from '../components/AppText';
 
 const Screen = props => {
+  const {loading: screenLoading} = props;
   const loading = useSelector(state => state.loading.global);
 
   const {screenStyle} = props;
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View {...props} style={[styles.container, screenStyle]}>
-        <Modal visible={loading} transparent={true}>
+        <Modal visible={loading || !!screenLoading} transparent={true}>
           <View style={styles.loadingView} animated={false}>
             <AppText style={styles.loadingText} bold>
               Loading...

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert, StyleSheet, TouchableOpacity, View} from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -22,11 +22,14 @@ const ConfirmOTPScreen = () => {
   const confirm = route?.params?.confirm;
   const phone = route?.params?.phone || 'Phone Number';
 
+  const [loading, setLoading] = useState(false);
+
   const onBackPress = () => {
     navigation.goBack();
   };
 
   const onPressSubmit = async code => {
+    setLoading(true);
     try {
       if (confirm) {
         const userCredential = await confirm.confirm(code);
@@ -41,11 +44,13 @@ const ConfirmOTPScreen = () => {
     } catch (error) {
       console.log('# ConfirmOTPScreen,', error);
       Alert.alert('Alert', error.code);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Screen>
+    <Screen loading={loading}>
       <AppHeader style={styles.headerView}>
         <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
           <BackIcon />

@@ -42,6 +42,7 @@ const SignIn = () => {
           leadComponent={renderPhonePrefix}
           value={phone}
           onChangeText={setPhone}
+          keyboardType={'phone-pad'}
         />
       </View>
       <SizedBox size={27} />

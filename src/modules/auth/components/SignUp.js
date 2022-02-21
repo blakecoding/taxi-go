@@ -31,7 +31,10 @@ const SignUp = () => {
 
   return (
     <View style={[GStyles.container, styles.container]}>
-      <AppInput placeholder={'name@example.com'} />
+      <AppInput
+        placeholder={'name@example.com'}
+        keyboardType={'email-address'}
+      />
       <SizedBox size={15} />
       <View style={GStyles.flexRow}>
         <Flag />
@@ -42,6 +45,7 @@ const SignUp = () => {
           placeholder={'Phone Number'}
           value={phone}
           onChangeText={setPhone}
+          keyboardType={'phone-pad'}
         />
       </View>
       <SizedBox size={27} />

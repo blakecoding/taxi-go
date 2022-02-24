@@ -18,7 +18,7 @@ workflows:
         - other
       vars:
         PACKAGE_NAME: 'com.taxigo' # <-- Put your package name here e.g. com.domain.myapp
-      node: latest
+      node: v14.18.0
     triggering:
       events:
         - push

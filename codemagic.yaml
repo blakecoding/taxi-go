@@ -15,7 +15,6 @@ workflows:
           # FCI_KEYSTORE_PASSWORD <-- Put your keystore alias password here
           # FCI_KEY_PASSWORD <-- Put your keystore alias username here
           # FCI_KEY_ALIAS <-- Put your keystore alias username here
-        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         - other
       vars:
         PACKAGE_NAME: 'com.taxigo' # <-- Put your package name here e.g. com.domain.myapp

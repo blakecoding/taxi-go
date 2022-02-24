@@ -45,6 +45,9 @@ workflows:
           # keyAlias=$CM_KEY_ALIAS_USERNAME
           # storeFile=$FCI_KEYSTORE_PATH
           # EOF
+          cd android/
+          ./gradlew signingReport
+          cd ../
       - name: Build Android release
         script: |
           # Set environment variable so it can be used to increment build number in android/app/build.gradle

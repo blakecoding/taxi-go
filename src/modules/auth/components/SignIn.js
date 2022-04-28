@@ -4,28 +4,30 @@ import {GStyles} from '../../../core/theme';
 import {AppButton, AppInput, AppText, SizedBox} from '../../../core/components';
 import Flag from './Flag';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
+import store from '../../../core/store';
 
 const SignIn = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
   const [phone, setPhone] = useState('');
-
+  const [callingCode, setCallingCode] = useState('1');
   const onSignInPress = async () => {
-    const confirm = await dispatch.auth.authPhoneLogin(phone);
+    const phoneNumber = `+${callingCode}${phone}`;
+    const confirm = await store.dispatch.auth.authPhoneLogin(phoneNumber);
     if (confirm) {
       navigation.navigate('otp', {confirm, phone});
     }
   };
 
-  const renderPhonePrefix = (value = '+84') => {
-    return (
-      <>
-        <Text style={styles.phonePrefix}>{value}</Text>
-        <SizedBox size={20} />
-      </>
-    );
-  };
+  const renderPhonePrefix =
+    (value = '84') =>
+    () => {
+      return (
+        <>
+          <Text style={styles.phonePrefix}>+{value}</Text>
+          <SizedBox size={20} />
+        </>
+      );
+    };
 
   return (
     <View style={[GStyles.container, styles.container]}>
@@ -34,12 +36,12 @@ const SignIn = () => {
       </AppText>
       <SizedBox style={20} />
       <View style={GStyles.flexRow}>
-        <Flag />
+        <Flag setCode={setCallingCode} />
         <SizedBox size={20} />
         <AppInput
           placeholder={'Phone Number'}
           style={GStyles.flex1}
-          leadComponent={renderPhonePrefix}
+          leadComponent={renderPhonePrefix(callingCode)}
           value={phone}
           onChangeText={setPhone}
           keyboardType={'phone-pad'}

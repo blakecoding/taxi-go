@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Alert, StyleSheet, TouchableOpacity, View} from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
 
 import {
   AppButton,
@@ -13,11 +12,11 @@ import {
 } from '../../../core/components';
 import {AppColors} from '../../../core/theme';
 import {BackIcon} from '../../../assets';
+import store from '../../../core/store';
 
 const ConfirmOTPScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const dispatch = useDispatch();
 
   const confirm = route?.params?.confirm;
   const phone = route?.params?.phone || 'Phone Number';
@@ -35,7 +34,7 @@ const ConfirmOTPScreen = () => {
         const userCredential = await confirm.confirm(code);
         if (userCredential) {
           const {user} = userCredential;
-          dispatch.auth.SET_USER({user, uid: user.uid});
+          store.dispatch.auth.SET_USER({user, uid: user.uid});
           navigation.navigate('chats');
         } else {
           throw new Error('Cannot get user');

@@ -3,11 +3,12 @@ import React from 'react';
 import {SizedBox} from '../../../core/components';
 import {Dropdown, flagImage} from '../../../assets';
 import {AppColors, GStyles} from '../../../core/theme';
+import CountryPicker from '../../../core/components/CountryPicker';
 
-const Flag = () => {
+const Flag = ({setCode}) => {
   return (
     <View style={styles.flexView}>
-      <Image source={flagImage} />
+      <CountryPicker setCode={setCode} />
       <SizedBox size={8} />
       <View style={GStyles.triangle_down} />
     </View>

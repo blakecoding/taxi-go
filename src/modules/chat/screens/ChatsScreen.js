@@ -13,15 +13,13 @@ import {useNavigation} from '@react-navigation/native';
 import {AppHeader, AppInput, Screen, SizedBox} from '../../../core/components';
 import {AppColors} from '../../../core/theme';
 import {BackIcon, MagnifyingIcon} from '../../../assets';
-import {useDispatch} from 'react-redux';
+import store from '../../../core/store';
 
 const ChatsScreen = () => {
   const navigation = useNavigation();
 
-  const dispatch = useDispatch();
-
   const onBackPress = async () => {
-    const res = await dispatch.auth.signOut();
+    const res = await store.dispatch.auth.signOut();
     console.log('#res', res);
     navigation.navigate('auth');
   };
